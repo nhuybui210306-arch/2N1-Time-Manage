@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2N1 - Dashboard</title>
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="logo">
+                <h2>2N1</h2>
+            </div>
+            
+            <div class="user-info">
+                <div class="user-avatar">
+                    <i class="fas fa-user-circle"></i>
+                </div>
+                <h3 id="userName"></h3>
+                <p id="userEmail"></p>
+            </div>
+            
+            <div class="points-display">
+                <i class="fas fa-star"></i>
+                <span id="userPoints">0</span> điểm
+            </div>
+            
+            <nav class="nav-menu">
+                <a href="#" class="active"><i class="fas fa-home"></i> Trang chủ</a>
+                <a href="#"><i class="fas fa-calendar"></i> Lịch học</a>
+                <a href="#"><i class="fas fa-tasks"></i> Nhiệm vụ</a>
+                <a href="#" id="petStoreBtn"><i class="fas fa-paw"></i> Cửa hàng thú cưng</a>
+                <a href="#"><i class="fas fa-chart-line"></i> Thống kê</a>
+            </nav>
+            
+            <div class="music-player">
+                <div class="music-header">
+                    <i class="fas fa-headphones"></i>
+                    <span>Lofi Focus</span>
+                </div>
+                <div class="music-controls">
+                    <button id="playMusic"><i class="fas fa-play"></i></button>
+                    <button id="pauseMusic"><i class="fas fa-pause"></i></button>
+                    <input type="range" id="volumeControl" min="0" max="1" step="0.1" value="0.5">
+                </div>
+                <select id="musicSelect">
+                    <option value="lofi1">Lofi Chill 1</option>
+                    <option value="lofi2">Lofi Chill 2</option>
+                    <option value="lofi3">Lofi Chill 3</option>
+                    <option value="lofi4">Lofi Chill 4</option>
+                </select>
+            </div>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Header -->
+            <div class="header">
+                <h1>Chào mừng trở lại, <span id="welcomeName"></span>!</h1>
+                <div class="date-display">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span id="currentDate"></span>
+                </div>
+            </div>
+            
+            <!-- Pomodoro Timer -->
+            <div class="pomodoro-section">
+                <div class="pomodoro-card">
+                    <h2><i class="fas fa-clock"></i> Pomodoro Timer</h2>
+                    <div class="timer-display">
+                        <span id="minutes">25</span>:<span id="seconds">00</span>
+                    </div>
+                    <div class="timer-controls">
+                        <button id="startPomodoro" class="btn-primary"><i class="fas fa-play"></i> Bắt đầu</button>
+                        <button id="pausePomodoro" class="btn-secondary"><i class="fas fa-pause"></i> Tạm dừng</button>
+                        <button id="resetPomodoro" class="btn-secondary"><i class="fas fa-redo"></i> Reset</button>
+                    </div>
+                    <div class="timer-modes">
+                        <button class="mode-btn active" data-time="25">25 phút</button>
+                        <button class="mode-btn" data-time="5">Nghỉ ngắn</button>
+                        <button class="mode-btn" data-time="15">Nghỉ dài</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Daily Tasks -->
+            <div class="tasks-section">
+                <h2><i class="fas fa-tasks"></i> Nhiệm vụ trong ngày</h2>
+                <div class="add-task">
+                    <input type="text" id="taskTitle" placeholder="Tên nhiệm vụ">
+                    <input type="time" id="taskTime">
+                    <select id="taskPriority">
+                        <option value="high">Cao</option>
+                        <option value="medium">Trung bình</option>
+                        <option value="low">Thấp</option>
+                    </select>
+                    <button id="addTaskBtn" class="btn-primary">
+                        <i class="fas fa-plus"></i> Thêm
+                    </button>
+                </div>
+                
+                <div class="tasks-list" id="tasksList">
+                    <!-- Tasks will be dynamically added here -->
+                </div>
+            </div>
+            
+            <!-- Weekly Schedule -->
+            <div class="schedule-section">
+                <h2><i class="fas fa-calendar-week"></i> Lịch học tuần</h2>
+                <div class="schedule-grid">
+                    <div class="schedule-day">
+                        <h3>Thứ 2</h3>
+                        <textarea placeholder="Nhập lịch học..." data-day="monday"></textarea>
+                    </div>
+                    <div class="schedule-day">
+                        <h3>Thứ 3</h3>
+                        <textarea placeholder="Nhập lịch học..." data-day="tuesday"></textarea>
+                    </div>
+                    <div class="schedule-day">
+                        <h3>Thứ 4</h3>
+                        <textarea placeholder="Nhập lịch học..." data-day="wednesday"></textarea>
+                    </div>
+                    <div class="schedule-day">
+                        <h3>Thứ 5</h3>
+                        <textarea placeholder="Nhập lịch học..." data-day="thursday"></textarea>
+                    </div>
+                    <div class="schedule-day">
+                        <h3>Thứ 6</h3>
+                        <textarea placeholder="Nhập lịch học..." data-day="friday"></textarea>
+                    </div>
+                    <div class="schedule-day">
+                        <h3>Thứ 7</h3>
+                        <textarea placeholder="Nhập lịch học..." data-day="saturday"></textarea>
+                    </div>
+                    <div class="schedule-day">
+                        <h3>Chủ nhật</h3>
+                        <textarea placeholder="Nhập lịch học..." data-day="sunday"></textarea>
+                    </div>
+                </div>
+                <button id="saveScheduleBtn" class="btn-primary">
+                    <i class="fas fa-save"></i> Lưu lịch học
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Pet Store Modal -->
+    <div id="petStoreModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2><i class="fas fa-paw"></i> Cửa hàng thú cưng</h2>
+            <p>Điểm của bạn: <span id="modalPoints">0</span></p>
+            
+            <div class="pets-grid">
+                <div class="pet-card" data-pet="cat" data-price="100">
+                    <i class="fas fa-cat"></i>
+                    <h3>Mèo</h3>
+                    <p>100 điểm</p>
+                    <button class="buy-pet-btn">Mua</button>
+                </div>
+                <div class="pet-card" data-pet="dog" data-price="150">
+                    <i class="fas fa-dog"></i>
+                    <h3>Chó</h3>
+                    <p>150 điểm</p>
+                    <button class="buy-pet-btn">Mua</button>
+                </div>
+                <div class="pet-card" data-pet="hippo" data-price="200">
+                    <i class="fas fa-hippo"></i>
+                    <h3>Hà mã</h3>
+                    <p>200 điểm</p>
+                    <button class="buy-pet-btn">Mua</button>
+                </div>
+                <div class="pet-card" data-pet="dragon" data-price="300">
+                    <i class="fas fa-dragon"></i>
+                    <h3>Rồng</h3>
+                    <p>300 điểm</p>
+                    <button class="buy-pet-btn">Mua</button>
+                </div>
+                <div class="pet-card" data-pet="fish" data-price="50">
+                    <i class="fas fa-fish"></i>
+                    <h3>Cá</h3>
+                    <p>50 điểm</p>
+                    <button class="buy-pet-btn">Mua</button>
+                </div>
+                <div class="pet-card" data-pet="frog" data-price="80">
+                    <i class="fas fa-frog"></i>
+                    <h3>Ếch</h3>
+                    <p>80 điểm</p>
+                    <button class="buy-pet-btn">Mua</button>
+                </div>
+            </div>
+            
+            <div class="my-pets">
+                <h3>Thú cưng của tôi</h3>
+                <div id="myPetsList" class="my-pets-list">
+                    <!-- My pets will be displayed here -->
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Audio element for music -->
+    <audio id="lofiAudio" loop>
+        <source src="assets/sounds/lofi1.mp3" type="audio/mpeg">
+    </audio>
+    
+    <script src="js/dashboard.js"></script>
+</body>
+</html>
