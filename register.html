@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng ký - 2N1 Time Manager</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="register-container">
+        <div class="register-box">
+            <div class="register-left">
+                <div class="register-content">
+                    <h1>2N1</h1>
+                    <p>Quản lý thời gian thông minh</p>
+                    <div class="floating-elements">
+                        <i class="fas fa-clock"></i>
+                        <i class="fas fa-tasks"></i>
+                        <i class="fas fa-pomodoro"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="register-right">
+                <h2>Tạo tài khoản</h2>
+                <p class="subtitle">Bắt đầu hành trình quản lý thời gian của bạn</p>
+                
+                <form id="registerForm" onsubmit="return handleRegister(event)">
+                    <div class="input-group">
+                        <i class="fas fa-user"></i>
+                        <input type="text" id="fullname" placeholder="Họ và tên" required>
+                    </div>
+                    
+                    <div class="input-group">
+                        <i class="fas fa-calendar"></i>
+                        <input type="number" id="age" placeholder="Tuổi" min="1" max="120" required>
+                    </div>
+                    
+                    <div class="input-group">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" id="email" placeholder="Email" required>
+                    </div>
+                    
+                    <div class="input-group">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="password" placeholder="Mật khẩu" required>
+                    </div>
+                    
+                    <div class="input-group">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="confirmPassword" placeholder="Xác nhận mật khẩu" required>
+                    </div>
+                    
+                    <div class="terms">
+                        <input type="checkbox" id="terms" required>
+                        <label for="terms">Tôi đồng ý với <a href="#">Điều khoản sử dụng</a></label>
+                    </div>
+                    
+                    <button type="submit" class="register-btn">
+                        <span>Đăng ký</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </form>
+                
+                <p class="login-link">
+                    Đã có tài khoản? <a href="index.html">Đăng nhập</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function handleRegister(event) {
+            event.preventDefault();
+            
+            const fullname = document.getElementById('fullname').value;
+            const age = document.getElementById('age').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            
+            if (password !== confirmPassword) {
+                alert('Mật khẩu xác nhận không khớp!');
+                return false;
+            }
+            
+            // Lưu thông tin user vào localStorage
+            const user = {
+                fullname: fullname,
+                age: age,
+                email: email,
+                password: password,
+                points: 0,
+                pets: [],
+                tasks: [],
+                schedule: {}
+            };
+            
+            localStorage.setItem('currentUser', JSON.stringify(user));
+            localStorage.setItem('isLoggedIn', 'true');
+            
+            // Chuyển đến trang chủ
+            window.location.href = 'dashboard.html';
+            
+            return false;
+        }
+    </script>
+</body>
+</html>
